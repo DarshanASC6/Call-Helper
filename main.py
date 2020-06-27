@@ -1,4 +1,4 @@
-import random, json, time
+import random, json, time, playsound
 
 # Import JSON compatability into the file
 with open('data.json', encoding="utf8") as f:
@@ -18,8 +18,8 @@ r = random.randint(0,1)
 subject = random.choice(data['Darshan'])
 
 method = (random.choice(data['contact-methods']) + "ing")
-#
-# tips = random.choices(data['contact-starters'])
+
+tips = random.choices(data['contact-starters'])
 
 def countdown(t):
     while t:
@@ -28,7 +28,7 @@ def countdown(t):
         print(timer, end="\r")
         time.sleep(1)
         t -= 1
-    print('Blast Off!!!')
+    playsound.playsound("Go.mp3")
 
 def start():
     print("Get ready to start", method, subject)
@@ -44,7 +44,6 @@ def start():
 
     countdown(int(calltime))
     # Start talking
-
 
     if r:
         print("Try starting out with these:")
